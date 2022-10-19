@@ -7,7 +7,13 @@
 
 2.重写组织数据的程序 
 
+![2GG2D(2_ZW~3){33F5{9VUB](https://user-images.githubusercontent.com/96533248/196657872-796bb29e-4915-4ec3-b29f-678c285805c6.jpg)
+
+
 3.使用文件输入流重写程序，要求用输入操作符重载函数来代替read函数调用
+
+![1B3BM@YPK6QJD 93FOV`@1Y](https://user-images.githubusercontent.com/96533248/196657920-4b183416-db21-4328-9cc1-a1264b811a28.jpg)
+
 
 第二次：
 
