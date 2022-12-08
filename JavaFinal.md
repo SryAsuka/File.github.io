@@ -4,42 +4,69 @@
   
   管理员（管理员号(Uid)，账号(Uacc)，密码(Upwd)，姓名(Uname)，电话(Uphone)，等级(Upower)）
   
-    Create table User (
-      Uid int primary key,
-      Uacc varchar(10),
-      Upwd varchar(16),
-      Uname varchar(20),
-      Uphone varchar(11),
-      Upower int
+    Create table if not exists user (
+      uid int primary key,
+      uacc varchar(10),
+      upwd varchar(16),
+      uname varchar(20),
+      uphone varchar(11),
+      upower int
     );
   
   仓库 （仓库号(Wid)，仓库名(Wname)，仓库地址(Wadd)）
   
-    Create table WH (
-      Wid int primary key,
-      Wname varchar(20),
-      Wadd varchar(50)
+    Create table if not exists wh (
+      wid int primary key,
+      wname varchar(20) primary key,
+      wadd varchar(50)
     );
   
-  货物（货物号(Gid)，货物名称(Gname)，货物类型(Gtype)）
+  货物（货物号(Gid)，货物名(Gname)，货物类型(Gtype)）
   
-    Create table Goods (
-      Gno int(3) primary key,
-      Gname varchar(20),
-      Gtype varchar(20),
-      Stocks int,
-      Supplier varchar(20),
+    Create table if not exists goods (
+      gid int primary key,
+      gname varchar(20),
+      gtype varchar(20)
       );
   
-  库存（编号(),货物名(),仓库名(),库存量(),）
+  库存（编号(Sid),货物名(Gname),仓库名(Wname),库存量(SStocks)）
   
-  入库（入库号(Iid),货物名(Gname),仓库名(Wname),入库量(Istocks),管理员号(Uid),入库时间(IDate)）
+    Create table if not exists stocks (
+      sid int primary key,
+      gname varchar(20),
+      wname varchar(20),
+      sstocks int,
+      foreign key(gname) references goods(gname),
+      foreign key(wname) references wh(wname)
+    );
   
-    Create
+  入库（入库号(Iid),货物名(Gname),仓库名(Wname),入库量(Istocks),管理员名(Uname),入库时间(IDate)）
+  
+    Create table if not exists istocks (
+      iid int primary key,
+      gname varchar(20),
+      wname varchar(20),
+      istocks int,
+      uname varchar(20),
+      idate date,
+      foreign key(gname) references goods(gname),
+      foreign key(wname) references wh(wname),
+      foreign key(uname) references user(uname)
+    )
   
   出库（出库号(Oid),货物名(Gname),仓库号(Wname),出库量(Ostocks),管理员编号(Uid),出库时间(ODate)）
   
-  
+    Create table if not exists ostocks (
+      oid int primary key,
+      gname varchar(20),
+      wname varchar(20),
+      ostocks int,
+      uname varchar(20),
+      odate date,
+      foreign key(gname) references goods(gname),
+      foreign key(wname) references wh(wname),
+      foreign key(uname) references user(uname)
+    )
 
 # 分配任务
 
