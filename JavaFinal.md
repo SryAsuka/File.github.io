@@ -96,14 +96,56 @@
 
 ## 分配任务
 
- 管理员表
+ ### 管理员表
  
-  - 登录账号，然后返回管理员等级，最高管理员（1），普通仓管（2）
-  - 返回管理员表信息
-  - 修改管理员信息（无法修改管理员等级）
-  - 
-  - 
+  - 登录账号，然后返回管理员等级，最高管理员（1），普通仓管（2） （形参账号密码，返回值int）
+  - 返回全部管理员表信息 (无形参，返回值arraylist)
+    
+  >PS:(换回值为arraylist,下面是例子)
+    
+ ```ruby
+     public ArrayList<String> selectData(){
+        ArrayList<String> arrayList = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            student student = new student();
+            connection = useSql.getConnection();
+            String sql = "SELECT * FROM `studens`";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                student.setName(resultSet.getString("name"));
+                student.setAge(resultSet.getString("age"));
+                student.setProvince(resultSet.getString("province"));
+                student.setPhoneNum(resultSet.getString("phoneNum"));
+                arrayList.add(student.getName());
+                arrayList.add(student.getAge());
+                arrayList.add(student.getProvince());
+                arrayList.add(student.getPhoneNum());
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            useSql.release(connection,preparedStatement,resultSet);
+        }
+        return  arrayList;
+    }
+```
+  - 修改管理员信息,根据姓名修改（无法修改管理员等级）  (形参 （旧名 + 新名 + ...） 除等级以外的，无返回值)
+  - 根据 管理员id 查找管理员信息（形参（姓名） 返回值arraylist）
+  - 增加管理员（全部形参，无返回值）
+  - 删除管理员信息,根据姓名删除 （若等级为1，无法删除）（形参 （姓名） ，无返回值）
 
+>之后的要求差不多都是这样
+
+  ### 仓库表
+  
+  - 增加仓库
+  - 查看全部仓库
+  - 根据仓库名删除仓库
+  - 根据仓库名查找仓库
 
 
   
