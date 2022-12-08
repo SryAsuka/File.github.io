@@ -26,6 +26,8 @@
       wname varchar(20),
       wadd varchar(50)
     );
+    
+    insert into wh values (10001,"A","重庆");
   
   货物（货物号(Gid)，货物名(Gname)，货物类型(Gtype)）
   
@@ -34,6 +36,10 @@
       gname varchar(20),
       gtype varchar(20)
       );
+
+
+    insert into goods values (10001,"苹果","水果");
+    
   
   库存（编号(Sid),货物名(Gname),仓库名(Wname),库存量(SStocks)）
   
@@ -47,6 +53,8 @@
       foreign key(gid) references goods(gid),
       foreign key(wid) references wh(wid)
     );
+  
+  insert into stocks values (001,001,"苹果",001,"A",500);
   
   入库（入库号(Iid),货物名(Gname),仓库名(Wname),入库量(Istocks),管理员名(Uname),入库时间(IDate)）
   
@@ -64,6 +72,8 @@
       foreign key(wid) references wh(wid),
       foreign key(uid) references user(uid)
     );
+    
+    insert into istocks values (001,001,"苹果",001,"A",500,001,"张三",now());
   
   出库（出库号(Oid),货物名(Gname),仓库号(Wname),出库量(Ostocks),管理员编号(Uid),出库时间(ODate)）
   
@@ -81,6 +91,8 @@
       foreign key(wid) references wh(wid),
       foreign key(uid) references user(uid)
     );
+
+  insert into ostocks values (001,001,"苹果",001,"A",100,001,"张三",now());
 
 # 分配任务
 
