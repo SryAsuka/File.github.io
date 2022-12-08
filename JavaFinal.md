@@ -39,7 +39,9 @@
   
     Create table if not exists stocks (
       sid int primary key,
+      gid int,
       gname varchar(20),
+      wid int,
       wname varchar(20),
       sstocks int,
       foreign key(gid) references goods(gid),
@@ -50,29 +52,35 @@
   
     Create table if not exists istocks (
       iid int primary key,
+      gid int,
       gname varchar(20),
+      wid int,
       wname varchar(20),
       istocks int,
+      uid int,
       uname varchar(20),
       idate date,
       foreign key(gid) references goods(gid),
       foreign key(wid) references wh(wid),
       foreign key(uid) references user(uid)
-    )
+    );
   
   出库（出库号(Oid),货物名(Gname),仓库号(Wname),出库量(Ostocks),管理员编号(Uid),出库时间(ODate)）
   
     Create table if not exists ostocks (
       oid int primary key,
+      gid int,
       gname varchar(20),
+      wid int,
       wname varchar(20),
       ostocks int,
+      uid int,
       uname varchar(20),
       odate date,
       foreign key(gid) references goods(gid),
       foreign key(wid) references wh(wid),
       foreign key(uid) references user(uid)
-    )
+    );
 
 # 分配任务
 
