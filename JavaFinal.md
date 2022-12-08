@@ -1,8 +1,6 @@
-# 新建数据库
+# 仓库管理系统
 
-  以一个仓库为例
-  
-  仓库 
+## 新建数据库
   
   管理员（管理员号(Uid)，账号(Uacc)，密码(Upwd)，姓名(Uname)，电话(Uphone)，等级(Upower)）
   
@@ -13,7 +11,7 @@
       Uname varchar(20),
       Uphone varchar(11),
       Upower int
-      );
+    );
   
   仓库 （仓库号(Wid)，仓库名(Wname)，仓库地址(Wadd)）
   
@@ -23,7 +21,7 @@
       Wadd varchar(50)
     );
   
-  货物（货物号(Gid)，货物名称(Gname)，货物类型(Gtype)，库存(Stocks)，供应商(Supplier)）
+  货物（货物号(Gid)，货物名称(Gname)，货物类型(Gtype)）
   
     Create table Goods (
       Gno int(3) primary key,
@@ -33,11 +31,13 @@
       Supplier varchar(20),
       );
   
-  入库
+  库存（编号(),货物名(),仓库名(),库存量(),）
   
+  入库（入库号(Iid),货物名(Gname),仓库名(Wname),入库量(Istocks),管理员号(Uid),入库时间(IDate)）
   
+    Create
   
-  出库
+  出库（出库号(Oid),货物名(Gname),仓库号(Wname),出库量(Ostocks),管理员编号(Uid),出库时间(ODate)）
   
   
 
