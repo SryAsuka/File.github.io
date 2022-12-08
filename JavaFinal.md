@@ -2,7 +2,9 @@
 
   以一个仓库为例
   
-  仓库
+  仓库 
+  
+  管理员（管理员编号(Uid)，账号(Uacc)，密码(Upwd)，姓名(Uname)，电话(Uphone)，等级(Upower)）
   
   货物（货物编号(Gno)，货物名称(Gname)，货物类型(Gtype)，库存(Stocks)，供应商(Supplier)）
   
