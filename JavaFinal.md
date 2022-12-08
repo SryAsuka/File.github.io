@@ -16,12 +16,14 @@
       uphone varchar(11),
       upower int
     );
+    
+    insert into user values (001,"admin","123456","张三","12345678901",1);
   
   仓库 （仓库号(Wid)，仓库名(Wname)，仓库地址(Wadd)）
   
     Create table if not exists wh (
       wid int primary key,
-      wname varchar(20) primary key,
+      wname varchar(20),
       wadd varchar(50)
     );
   
@@ -40,8 +42,8 @@
       gname varchar(20),
       wname varchar(20),
       sstocks int,
-      foreign key(gname) references goods(gname),
-      foreign key(wname) references wh(wname)
+      foreign key(gid) references goods(gid),
+      foreign key(wid) references wh(wid)
     );
   
   入库（入库号(Iid),货物名(Gname),仓库名(Wname),入库量(Istocks),管理员名(Uname),入库时间(IDate)）
@@ -53,9 +55,9 @@
       istocks int,
       uname varchar(20),
       idate date,
-      foreign key(gname) references goods(gname),
-      foreign key(wname) references wh(wname),
-      foreign key(uname) references user(uname)
+      foreign key(gid) references goods(gid),
+      foreign key(wid) references wh(wid),
+      foreign key(uid) references user(uid)
     )
   
   出库（出库号(Oid),货物名(Gname),仓库号(Wname),出库量(Ostocks),管理员编号(Uid),出库时间(ODate)）
@@ -67,14 +69,16 @@
       ostocks int,
       uname varchar(20),
       odate date,
-      foreign key(gname) references goods(gname),
-      foreign key(wname) references wh(wname),
-      foreign key(uname) references user(uname)
+      foreign key(gid) references goods(gid),
+      foreign key(wid) references wh(wid),
+      foreign key(uid) references user(uid)
     )
 
 # 分配任务
 
-
+ 管理员表
+ 
+ -通过等级区分
 
 
 
