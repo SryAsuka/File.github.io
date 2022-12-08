@@ -54,7 +54,7 @@
       foreign key(wid) references wh(wid)
     );
   
-  insert into stocks values (001,001,"苹果",001,"A",500);
+    insert into stocks values (001,001,"苹果",001,"A",500);
   
   入库（入库号(Iid),货物名(Gname),仓库名(Wname),入库量(Istocks),管理员名(Uname),入库时间(IDate)）
   
@@ -92,7 +92,7 @@
       foreign key(uid) references user(uid)
     );
 
-  insert into ostocks values (001,001,"苹果",001,"A",100,001,"张三",now());
+    insert into ostocks values (001,001,"苹果",001,"A",100,001,"张三",now());
 
 # 分配任务
 
