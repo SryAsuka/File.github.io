@@ -73,24 +73,25 @@
   出库（出库号(Oid),货物名(Gname),仓库号(Wname),出库量(Ostocks),管理员编号(Uid),出库时间(ODate)）
   
     Create table if not exists istocks (
-      oid char(7) primary key,
+      oid char(4) primary key,
       gname varchar(20),
       wname varchar(20),
       ostocks int,
       uname varchar(20),
       odate date,
-      foreign key(gid) references goods(gid),
-      foreign key(wid) references wh(wid),
-      foreign key(uid) references user(uid)
+      foreign key(gname) references goods(gname),
+      foreign key(wname) references wh(wname),
+      foreign key(uname) references user(uname)
     );
 
-    insert into istocks values ("Out001","苹果","A",100,"张三",now());
+    insert into istocks values ("T001","苹果","A",100,"张三",now());
 
 ## 分配任务
 
  ### 管理员表
  
-  - 登录账号，然后返回管理员等级，最高管理员（1），普通仓管（2） （形参账号密码，返回值int）
+  - 登录账号（允许输入三次），然后返回管理员等级，最高管理员（1），普通仓管（2） （形参账号密码，返回值int）
+  - 增加管理员（全部形参，无返回值）
   - 返回全部管理员表信息 (无形参，返回值arraylist)
     
   >PS:(换回值为arraylist,下面是例子)
@@ -127,7 +128,6 @@
 ```
   - 修改管理员信息,根据姓名修改（无法修改管理员等级）  (形参 （旧名 + 新名 + ...） 除等级以外的，无返回值)
   - 根据 管理员id 查找管理员信息（形参（姓名） 返回值arraylist）
-  - 增加管理员（全部形参，无返回值）
   - 删除管理员信息,根据姓名删除 （若等级为1，无法删除）（形参 （姓名） ，无返回值）
 
 >之后的要求差不多都是这样
@@ -136,10 +136,30 @@
   
   - 增加仓库
   - 查看全部仓库
-  - 根据仓库名删除仓库
-  - 根据仓库名查找仓库
+  - 根据仓库名删除仓库信息
+  - 根据仓库名查找仓库信息
+  - 根据仓库名修改仓库信息
 
-
+  ### 货物
   
+  - 增加货物
+  - 查看全部货物
+  - 根据货物名删除货物信息
+  - 根据货物名查找货物信息
+  - 根据货物名修改货物信息
+  
+  ### 库存表
+  
+  - （增加/减少库存在 入库表/出库表 中）
+  - 查看全部库存
+  - 根据 货物名/仓库名 查看库存 （分开写两个方法 sql语句变一下）
+  - 根据 货物名/仓库名 删除库存 （同上）
+  
+  ### 入库表
+  
+  - 增加入库信息（同时库存表 新增列 或 增加库存量 ）（需要点MySQL的知识）
+    > https://blog.csdn.net/weixin_43207025/article/details/106380505 [MySQL的触发器原理]
+  - 删除入库信息（同时库存表 减少库存量 同时 库存量为0则删除列）
+  - 查看全部入库信息
   
   
