@@ -95,6 +95,7 @@
   - 返回全部管理员表信息 (无形参，返回值arraylist)
     
   >PS:(换回值为arraylist,下面是例子)
+  >https://blog.csdn.net/weixin_45228360/article/details/119949787
     
  ```ruby
      public ArrayList<String> selectData(){
