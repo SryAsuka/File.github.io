@@ -72,7 +72,7 @@
   
   出库（出库号(Oid),货物名(Gname),仓库号(Wname),出库量(Ostocks),管理员编号(Uid),出库时间(ODate)）
   
-    Create table if not exists istocks (
+    Create table if not exists ostocks (
       oid char(4) primary key,
       gname varchar(20),
       wname varchar(20),
