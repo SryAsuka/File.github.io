@@ -84,7 +84,7 @@
       foreign key(uname) references user(uname)
     );
 
-    insert into istocks values ("T001","苹果","A",100,"张三",now());
+    insert into ostocks values ("T001","苹果","A",100,"张三",now());
 
 ## 分配任务
 
